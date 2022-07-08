@@ -4,6 +4,6 @@ This package provides Brave Browser, the browser based on Chromium with privacy 
 
 **Help from:**
 
-- [reback00 -to create de templete and the instructions how to build the xbps](https://notabug.org/reback00/void-goodies/src/master/srcpkgs/brave-bin)
+- [reback00 -thanks for create de template and the instructions how to build the xbps](https://notabug.org/reback00/void-goodies/src/master/srcpkgs/brave-bin)
 - [Brave PR for Void Linux](https://github.com/void-linux/void-packages/pull/5511/files)
 - [iridium-deb PKGBUILD (AUR)](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=iridium-deb)
