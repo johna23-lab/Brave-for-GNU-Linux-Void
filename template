@@ -1,7 +1,7 @@
 # Template file for 'brave-bin'
 pkgname=brave-bin
-version=1.43.93
-revision=2
+version=1.44.108
+revision=1
 only_for_archs="x86_64"
 short_desc="Secure, fast and private web browser with ad blocker"
 maintainer="Reback 00 <reback00@protonmail.com>"
