@@ -1,39 +1,26 @@
-# Template file for 'brave-bin'
+# Template file for 'brave-browser'
+# Repackages the official rpm package.
 pkgname=brave-bin
-version=1.45.133
+version=1.46.134
 revision=1
-only_for_archs="x86_64"
-short_desc="Secure, fast and private web browser with ad blocker"
-maintainer="Reback 00 <reback00@protonmail.com>"
-hostmakedepends="tar xz"
-license="Mozilla Public License Version 2.0"
-homepage="https://brave.com"
-distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser_${version}_amd64.deb"
-checksum=af998c23b88b27eab876fb7f203705947cf9eacca0617b06f1b6f6f545719932
-nostrip=yes
-
-do_extract() {
-	mkdir -p ${DESTDIR}
-	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/brave-browser_${version}_amd64.deb
-}
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="rpmextract"
+short_desc="Browser that rethinks the web"
+maintainer="mobinmob <mobinmob@disroot.org>"
+license="MPL-2.0"
+homepage="https://www.brave.com/"
+changelog="https://brave.com/latest/"
+distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser-${version}-1.x86_64.rpm"
+checksum=5a5fbda78767451cc7f4b9f6ba70703e715c427ad432cbcc211b48fdd6043650
 
 do_install() {
-	tar xf data.tar.xz -C ${DESTDIR}
+	# Remove cron job
+	rm -f etc/cron.daily/brave-browser
+	# Copy files
+	vcopy "*" /
+	# Install the icon
+	vmkdir usr/share/pixmaps
+	vinstall opt/brave.com/brave/product_logo_128.png 644 usr/share/pixmaps brave-browser.png
 
-	# Install the icons
-	for size in 24 32 48 64 128 256; do
-		# Create the brave browser xdg directory
-		mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps
-
-		# Copy the brave browser icon
-		mv ${DESTDIR}/opt/brave.com/brave/product_logo_${size}.png \
-		${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/brave-browser.png
-	done
-
-	# Remove unused icons
-	rm ${DESTDIR}/opt/brave.com/brave/*.xpm
-
-	# Remove the Debian/Ubuntu crontab
-	rm -rf ${DESTDIR}/etc
-	rm -rf ${DESTDIR}/opt/brave.com/brave/cron
 }
