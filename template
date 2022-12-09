@@ -1,7 +1,7 @@
 # Template file for 'brave-browser'
 # Repackages the official rpm package.
 pkgname=brave-bin
-version=1.46.134
+version=1.46.140
 revision=1
 archs="x86_64"
 create_wrksrc=yes
